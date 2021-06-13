@@ -57,7 +57,7 @@ async fn get_one(
     }
 }
 
-#[post("")]
+#[post("/")]
 async fn create(
     body: web::Json<PowerInput>,
     pool: web::Data<DbPool>,
