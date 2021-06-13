@@ -1,9 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-import { defineLocale } from 'ngx-bootstrap/chronos';
-import { BsLocaleService } from 'ngx-bootstrap/datepicker';
-import { deLocale } from 'ngx-bootstrap/locale';
-import { IFormResult } from '../models/form-result';
+import { IFormResult } from '../../../shared/models/form-result';
 import { ApiBackendService } from '../../../core/services/api-backend.service';
 import { Oil, Power, Water } from '../../../core/services/classes/api-backend';
 import { Subject } from 'rxjs';
@@ -22,14 +18,9 @@ export class CreatorComponent implements OnInit, OnDestroy {
   private readonly ngUnsubscribe = new Subject();
 
   constructor(
-    private readonly fb: FormBuilder,
     private readonly apiBackendService: ApiBackendService,
-    private readonly bsLocalService: BsLocaleService,
     private readonly alertService: AlertService
-  ) {
-    defineLocale('de', deLocale);
-    this.bsLocalService.use('de');
-  }
+  ) {}
 
   ngOnInit(): void {}
 

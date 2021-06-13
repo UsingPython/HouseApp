@@ -9,7 +9,7 @@ import { AlertService } from 'src/app/core/services/alert.service';
 import { ApiBackendService } from 'src/app/core/services/api-backend.service';
 import { Oil, Power, Water } from 'src/app/core/services/classes/api-backend';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { IFormResult } from '../models/form-result';
+import { IFormResult } from '../../../shared/models/form-result';
 import { CreatorComponent } from './creator.component';
 
 describe('CreatorComponent', () => {
