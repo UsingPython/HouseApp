@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CoreModule } from 'src/app/core/core.module';
+import { ApiBackendService } from 'src/app/core/services/api-backend.service';
 import { ChartService } from 'src/app/core/services/chart.service';
 import { ChartDataI } from '../models/line-charts';
 import { DashboardComponent } from './dashboard.component';
@@ -10,6 +11,7 @@ describe('DashboardComponent', () => {
   let fixture: ComponentFixture<DashboardComponent>;
 
   let mockChartService: jasmine.SpyObj<ChartService>;
+  let mockApiBackendService: jasmine.SpyObj<ApiBackendService>;
 
   let dummyPowerChartRes: ChartDataI[] = [];
   let dummyOilChartRes: ChartDataI[] = [];
@@ -21,6 +23,9 @@ describe('DashboardComponent', () => {
       'getOilChartData',
       'getWaterChartData',
     ]);
+    mockApiBackendService = jasmine.createSpyObj('ApiBackendService', [
+      'requestAll',
+    ]);
 
     await TestBed.configureTestingModule({
       imports: [CoreModule],
@@ -28,6 +33,10 @@ describe('DashboardComponent', () => {
         {
           provide: ChartService,
           useValue: mockChartService,
+        },
+        {
+          provide: ApiBackendService,
+          useValue: mockApiBackendService,
         },
       ],
       declarations: [DashboardComponent],
@@ -53,6 +62,7 @@ describe('DashboardComponent', () => {
     'should init component and load chart data',
     waitForAsync(() => {
       fixture.whenStable().then(() => {
+        expect(mockApiBackendService.requestAll).toHaveBeenCalled();
         expect(mockChartService.getOilChartData).toHaveBeenCalled();
         expect(mockChartService.getPowerChartData).toHaveBeenCalled();
         expect(mockChartService.getWaterChartData).toHaveBeenCalled();
