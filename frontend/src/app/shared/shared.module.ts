@@ -10,7 +10,12 @@ import { OilFormComponent } from './components/oil-form/oil-form.component';
 import { PowerFormComponent } from './components/power-form/power-form.component';
 
 @NgModule({
-  declarations: [FormComponent, WaterFormComponent, OilFormComponent, PowerFormComponent],
+  declarations: [
+    FormComponent,
+    WaterFormComponent,
+    OilFormComponent,
+    PowerFormComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -18,6 +23,12 @@ import { PowerFormComponent } from './components/power-form/power-form.component
     ButtonsModule,
     BsDatepickerModule.forRoot(),
   ],
-  exports: [CommonModule, IconsModule, FormComponent],
+  exports: [
+    CommonModule,
+    IconsModule,
+    PowerFormComponent,
+    WaterFormComponent,
+    OilFormComponent,
+  ],
 })
 export class SharedModule {}

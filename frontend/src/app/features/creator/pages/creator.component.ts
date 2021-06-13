@@ -1,7 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { IFormResult } from '../../../shared/models/form-result';
 import { ApiBackendService } from '../../../core/services/api-backend.service';
-import { Oil, Power, Water } from '../../../core/services/classes/api-backend';
+import {
+  Oil,
+  OilInput,
+  Power,
+  PowerInput,
+  Water,
+  WaterInput,
+} from '../../../core/services/classes/api-backend';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AlertService } from 'src/app/core/services/alert.service';
@@ -29,14 +35,10 @@ export class CreatorComponent implements OnInit, OnDestroy {
     this.ngUnsubscribe.complete();
   }
 
-  submitPower(powerForm: IFormResult): void {
+  submitPower(powerForm: PowerInput): void {
     this.apiBackendService
-      .postPower({
-        date: powerForm.date,
-        kwh: powerForm.value,
-      })
+      .postPower(powerForm)
       .pipe(takeUntil(this.ngUnsubscribe))
-
       .subscribe(
         (power) => {
           this.postedPower = power;
@@ -55,12 +57,9 @@ export class CreatorComponent implements OnInit, OnDestroy {
       );
   }
 
-  public submitWater(waterForm: IFormResult): void {
+  public submitWater(waterForm: WaterInput): void {
     this.apiBackendService
-      .postWater({
-        date: waterForm.date,
-        cubicmeter: waterForm.value,
-      })
+      .postWater(waterForm)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
@@ -80,12 +79,9 @@ export class CreatorComponent implements OnInit, OnDestroy {
       );
   }
 
-  public submitOil(oilForm: IFormResult): void {
+  public submitOil(oilForm: OilInput): void {
     this.apiBackendService
-      .postOil({
-        date: oilForm.date,
-        filled: oilForm.value,
-      })
+      .postOil(oilForm)
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe(
         (res) => {
