@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { WaterInput } from 'src/app/core/services/classes/api-backend';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Water, WaterInput } from 'src/app/core/services/classes/api-backend';
 import { IFormResult } from '../../models/form-result';
 
 @Component({
@@ -8,6 +8,7 @@ import { IFormResult } from '../../models/form-result';
   styleUrls: ['./water-form.component.css'],
 })
 export class WaterFormComponent implements OnInit {
+  @Input() existingWater?: Water;
   @Output() submitWaterEvent = new EventEmitter<WaterInput>();
 
   constructor() {}

@@ -30,6 +30,7 @@
     "@swimlane/ngx-charts": "^18.0.1",
     "@swimlane/ngx-datatable": "^19.0.0",
     "bootstrap": "^5.0.1",
+    "dayjs": "^1.10.5",
     "ngx-bootstrap": "^6.2.0",
     "rxjs": "^6.5.3",
     "tslib": "^2.3.0",

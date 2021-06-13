@@ -1,0 +1,32 @@
+<div class="modal-header">
+  <div class="modal-title pull-left">
+    <h2>Eintrag bearbeiten</h2>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="container">
+    <ng-container *ngIf="type === 'POWER'">
+      <app-power-form
+        (submitPowerEvent)="updateEntry($event)"
+        [existingPower]="powerEntry"
+      ></app-power-form>
+    </ng-container>
+    <ng-container *ngIf="type === 'WATER'">
+      <app-water-form
+        (submitWaterEvent)="updateEntry($event)"
+        [existingWater]="waterEntry"
+      ></app-water-form>
+    </ng-container>
+    <ng-container *ngIf="type === 'OIL'">
+      <app-oil-form
+        (submitOilEvent)="updateEntry($event)"
+        [existingOil]="oilEntry"
+      ></app-oil-form>
+    </ng-container>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" (click)="close()">
+    Schließen
+  </button>
+</div>

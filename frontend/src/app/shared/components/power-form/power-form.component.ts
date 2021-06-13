@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { PowerInput } from 'src/app/core/services/classes/api-backend';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Power, PowerInput } from 'src/app/core/services/classes/api-backend';
 import { IFormResult } from '../../models/form-result';
 
 @Component({
@@ -8,6 +8,7 @@ import { IFormResult } from '../../models/form-result';
   styleUrls: ['./power-form.component.css'],
 })
 export class PowerFormComponent implements OnInit {
+  @Input() existingPower?: Power;
   @Output() submitPowerEvent = new EventEmitter<PowerInput>();
 
   constructor() {}

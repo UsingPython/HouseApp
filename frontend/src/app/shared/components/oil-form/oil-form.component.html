@@ -2,6 +2,8 @@
   header="Füllstand Öltank eintragen"
   valueLabel="Ölstand Tank"
   valuePlaceholder="Gebe Ölstand ein"
+  [valueInput]="existingOil?.filled"
   dateLabel="Ablesedatum"
+  [dateInput]="existingOil?.date"
   (submitFormEvent)="submitOil($event)"
 ></app-form>

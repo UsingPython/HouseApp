@@ -1,0 +1,125 @@
+<div>
+  <tabset [justified]="true">
+    <tab heading="Strom">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <ngx-datatable
+            columnMode="force"
+            class="bootstrap"
+            [rows]="powerRow"
+            rowHeight="auto"
+            trackByProp="id"
+          >
+            <ngx-datatable-column name="ID" prop="id"> </ngx-datatable-column>
+            <ngx-datatable-column name="Datum" prop="date">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                {{ row.date | date: "mediumDate":"GMT+2":"de" }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="KWH" prop="kwh"> </ngx-datatable-column>
+
+            <ngx-datatable-column name="Bearbeiten" prop="edit">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <app-action
+                  type="POWER"
+                  [identifier]="row.id"
+                  (deleteEntry)="deletePower($event)"
+                  (changeEntry)="updateEntry($event)"
+                ></app-action>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Wasser">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <ngx-datatable
+            columnMode="force"
+            class="bootstrap"
+            [rows]="waterRow"
+            rowHeight="auto"
+            trackByProp="id"
+          >
+            <ngx-datatable-column name="ID" prop="id"> </ngx-datatable-column>
+            <ngx-datatable-column name="Datum" prop="date">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                {{ row.date | date: "mediumDate":"GMT+2":"de" }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Kubikmeter" prop="cubicmeter">
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Bearbeiten" prop="edit">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <app-action
+                  type="WATER"
+                  [identifier]="row.id"
+                  (deleteEntry)="deleteWater($event)"
+                  (changeEntry)="updateEntry($event)"
+                ></app-action>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </tab>
+    <tab heading="Öl">
+      <div class="row justify-content-center mt-5">
+        <div class="col-9">
+          <ngx-datatable
+            columnMode="force"
+            class="bootstrap"
+            [rows]="oilRow"
+            rowHeight="auto"
+            trackByProp="id"
+          >
+            <ngx-datatable-column name="ID" prop="id"> </ngx-datatable-column>
+            <ngx-datatable-column name="Datum" prop="date">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                {{ row.date | date: "mediumDate":"GMT+2":"de" }}
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column name="Füllstand" prop="filled">
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Bearbeiten" prop="edit">
+              <ng-template
+                let-row="row"
+                let-value="value"
+                ngx-datatable-cell-template
+              >
+                <app-action
+                  type="OIL"
+                  [identifier]="row.id"
+                  (deleteEntry)="deleteOil($event)"
+                  (changeEntry)="updateEntry($event)"
+                ></app-action>
+              </ng-template> </ngx-datatable-column
+          ></ngx-datatable>
+        </div>
+      </div>
+    </tab>
+  </tabset>
+</div>

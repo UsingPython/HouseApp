@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { OilInput } from 'src/app/core/services/classes/api-backend';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Oil, OilInput } from 'src/app/core/services/classes/api-backend';
 import { IFormResult } from '../../models/form-result';
 
 @Component({
@@ -8,7 +8,10 @@ import { IFormResult } from '../../models/form-result';
   styleUrls: ['./oil-form.component.css'],
 })
 export class OilFormComponent implements OnInit {
+  @Input() existingOil?: Oil;
   @Output() submitOilEvent = new EventEmitter<OilInput>();
+
+  public placeholder = 'Gebe Ölstand ein';
 
   constructor() {}
 
